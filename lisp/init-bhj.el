@@ -107,12 +107,31 @@ Returns (point) if current-char is visible."
       (forward-char)
       (insert "」\n--------------------------------\n"))))
 
-(use-package cperl-mode
+(defmacro fix-Ctrl+cCtrl+k (package &optional package-map)
+  (use-package package
+    :config
+    (define-key (or (symbol-value package-map)
+                    (symbol-value (intern
+                                   (concat
+                                    (symbol-name package)
+                                    (if (string-match "-mode$" (symbol-name package))
+                                        "-map"
+                                      "-mode-map")))))
+      (kbd "C-c C-k") nil)))
+
+(fix-Ctrl+cCtrl+k cperl-mode)
+(fix-Ctrl+cCtrl+k fence-edit)
+(fix-Ctrl+cCtrl+k markdown-mode)
+(fix-Ctrl+cCtrl+k cc-mode c-mode-base-map)
+(fix-Ctrl+cCtrl+k edit-indirect)
+
+(use-package fence-edit
   :config
-  (define-key cperl-mode-map (kbd "C-c C-k") nil))
-(use-package cc-mode
+  (define-key fence-edit-mode-map (kbd "C-x #") 'fence-edit-exit))
+
+(use-package edit-indirect
   :config
-  (define-key c-mode-base-map (kbd "C-c C-k") nil))
+  (define-key edit-indirect-mode-map (kbd "C-x #") #'edit-indirect-commit))
 
 (define-key global-map (kbd "s-SPC") #'fix-cjk-spaces)
 (provide 'init-bhj)
