@@ -124,6 +124,7 @@ Returns (point) if current-char is visible."
 (fix-Ctrl+cCtrl+k markdown-mode)
 (fix-Ctrl+cCtrl+k cc-mode c-mode-base-map)
 (fix-Ctrl+cCtrl+k edit-indirect)
+(fix-Ctrl+cCtrl+k tex-mode latex-mode-map)
 
 (use-package fence-edit
   :config
