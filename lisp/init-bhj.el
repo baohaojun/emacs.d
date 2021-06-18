@@ -108,16 +108,18 @@ Returns (point) if current-char is visible."
       (insert "」\n--------------------------------\n"))))
 
 (defmacro fix-Ctrl+cCtrl+k (package &optional package-map)
-  (use-package package
-    :config
-    (define-key (or (symbol-value package-map)
-                    (symbol-value (intern
-                                   (concat
-                                    (symbol-name package)
-                                    (if (string-match "-mode$" (symbol-name package))
-                                        "-map"
-                                      "-mode-map")))))
-      (kbd "C-c C-k") nil)))
+  `(use-package ,package
+     :config
+     (define-key
+       (or ,package-map
+           (symbol-value
+            (intern
+             (concat
+              (symbol-name (quote ,package))
+              (if (string-match "-mode$" (symbol-name (quote ,package)))
+                  "-map"
+                "-mode-map")))))
+       (kbd "C-c C-k") nil)))
 
 (fix-Ctrl+cCtrl+k cperl-mode)
 (fix-Ctrl+cCtrl+k fence-edit)
