@@ -137,4 +137,8 @@ Returns (point) if current-char is visible."
   (define-key edit-indirect-mode-map (kbd "C-x #") #'edit-indirect-commit))
 
 (define-key global-map (kbd "s-SPC") #'fix-cjk-spaces)
+(define-key global-map (kbd "C-x n N") (lambda () (interactive) (when (looking-at-p "\\s ")
+                                                                  (search-forward-regexp "\\sw")
+                                                                  (beginning-of-line))
+                                         (narrow-to-region (point) (point-max))))
 (provide 'init-bhj)

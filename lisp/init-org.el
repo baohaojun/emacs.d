@@ -482,8 +482,8 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
   :init
   (setq org-emphasis-regexp-components
         '(
-          "！？；：，。、  \t('\"{（“「『"              ;pre
-          "- —；：，。、 \t.!,:!?？;！'\")}（）\\”」』" ;post
+          " ！？；：，。、  \t('\"{（“「『"              ;pre
+          "-  —；：，。、 \t.!,:!?？;！'\")}（）\\”」』" ;post, "-" must be the first!
           " \t\r\n,"                                ;border *forbidden*
           "."                                       ;body-regexp
           1                                         ; newline
