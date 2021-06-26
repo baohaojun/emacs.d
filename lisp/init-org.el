@@ -489,6 +489,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
           1                                              ; newline
           ))
   :config
+  (define-key org-src-mode-map (kbd "C-c C-k") nil)
   (define-key org-mode-map (kbd "C-c C-k") nil))
 
 (provide 'init-org)
