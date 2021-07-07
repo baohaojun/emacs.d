@@ -146,4 +146,7 @@ Returns (point) if current-char is visible."
 (define-key global-map (kbd "<s-up>") #'previous-error)
 (define-key global-map (kbd "<s-left>") #'ajoke-pop-mark)
 (define-key global-map (kbd "<s-right>") #'ajoke-pop-mark-back)
+(define-key global-map (kbd "<M-left>") #'ajoke-pop-mark)
+(define-key global-map (kbd "<M-right>") #'ajoke-pop-mark-back)
+
 (provide 'init-bhj)
