@@ -142,4 +142,8 @@ Returns (point) if current-char is visible."
                                                                   (search-forward-regexp "\\sw")
                                                                   (beginning-of-line))
                                          (narrow-to-region (point) (point-max))))
+(define-key global-map (kbd "<s-down>") #'next-error)
+(define-key global-map (kbd "<s-up>") #'previous-error)
+(define-key global-map (kbd "<s-left>") #'ajoke-pop-mark)
+(define-key global-map (kbd "<s-right>") #'ajoke-pop-mark-back)
 (provide 'init-bhj)
