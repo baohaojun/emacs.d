@@ -137,6 +137,11 @@ Returns (point) if current-char is visible."
   :config
   (define-key edit-indirect-mode-map (kbd "C-x #") #'edit-indirect-commit))
 
+(use-package erc
+  :config
+  (require 'socks)
+  (setq erc-server-connect-function 'socks-open-network-stream))
+
 (define-key global-map (kbd "s-SPC") #'fix-cjk-spaces)
 (define-key global-map (kbd "C-x n N") (lambda () (interactive) (when (looking-at-p "\\s ")
                                                                   (search-forward-regexp "\\sw")
