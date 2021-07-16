@@ -12,5 +12,10 @@
   (with-eval-after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
+(use-package racer
+  :config
+  (defadvice racer-find-definition (before bhj/push-mark activate)
+    (ajoke--push-marker-ring)))
+
 (provide 'init-rust)
 ;;; init-rust.el ends here
